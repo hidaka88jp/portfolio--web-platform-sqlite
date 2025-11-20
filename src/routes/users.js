@@ -34,5 +34,18 @@ router.post('/login', async (req, res) => {
   });
 });
 
+// GET /users/:id
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const user = await prisma.user.findUnique({
+    where: { id: Number(id) },
+  });
+
+  if (!user) return res.status(404).json({ error: "User not found" });
+
+  return res.json(user);
+});
+
 
 export default router;
