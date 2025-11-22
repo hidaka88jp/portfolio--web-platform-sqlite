@@ -84,4 +84,36 @@ router.get("/user", async (req, res) => {
   res.json(messages);
 });
 
+// DELETE /messages/:id
+router.delete("/:id", async (req, res) => {
+  const token = req.headers.authorization;
+  const userId = await getUserIdFromToken(token);
+
+  if (!userId) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  const messageId = Number(req.params.id);
+
+  // get message and check ownership
+  const message = await prisma.message.findUnique({
+    where: { id: messageId },
+  });
+
+  if (!message) {
+    return res.status(404).json({ error: "Message not found" });
+  }
+
+  if (message.userId !== userId) {
+    return res.status(403).json({ error: "Forbidden" });
+  }
+
+  // delete message
+  await prisma.message.delete({
+    where: { id: messageId },
+  });
+
+  return res.json({ success: true });
+});
+
 export default router;
