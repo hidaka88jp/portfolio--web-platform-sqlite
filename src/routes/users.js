@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import prisma from "../../prisma/prismaClient.js";
 import crypto from "crypto";
+import bcrypt from "bcrypt";
 
 router.get('/', (req, res) => {
   res.json({ message: 'users endpoint' });
@@ -53,5 +54,24 @@ router.get('/:id', async (req, res) => {
   return res.json(user);
 });
 
+// POST /users/register
+router.post("/register", async (req, res) => {
+  const { name, password } = req.body;
+
+  const hashed = await bcrypt.hash(password, 10);
+
+  const user = await prisma.user.create({
+    data: {
+      name,
+      password: hashed
+    },
+  });
+
+  return res.json({
+    id: user.id,
+    name: user.name,
+    message: "User registered",
+  });
+});
 
 export default router;
