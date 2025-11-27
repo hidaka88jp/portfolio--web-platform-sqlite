@@ -10,6 +10,11 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+// For health check
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 // ルート
 app.use('/messages', messagesRouter)
 app.use('/users', usersRouter)
