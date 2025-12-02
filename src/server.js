@@ -12,7 +12,7 @@ app.set('port', port)
 const server = http.createServer(app)
 
 // サーバーを起動
-server.listen(port)
+server.listen(port, '0.0.0.0')
 server.on('error', onError)
 server.on('listening', onListening)
 
