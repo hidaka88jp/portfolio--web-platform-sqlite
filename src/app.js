@@ -3,6 +3,7 @@ import express from 'express'
 import messagesRouter from './routes/messages.js'
 import usersRouter from './routes/users.js'
 import sessionsRouter from './routes/sessions.js';
+import cors from 'cors';
 
 const app = express()
 
