@@ -6,6 +6,18 @@ import sessionsRouter from './routes/sessions.js';
 
 const app = express()
 
+// ⭐ CORS設定を最初に入れる
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      // 必要なら後で追加
+      // "https://your-frontend.vercel.app",
+    ],
+    credentials: true,
+  })
+);
+
 // ミドルウェア
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
