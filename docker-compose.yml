@@ -21,6 +21,7 @@ services:
     expose:
       - "3001"
     environment:
+      PORT: 3001
       DATABASE_URL: "mysql://appuser:app_pass@spike-message-board-mysql:3306/app"
     restart: always
 
