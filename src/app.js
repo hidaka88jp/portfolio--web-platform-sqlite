@@ -3,21 +3,9 @@ import express from 'express'
 import messagesRouter from './routes/messages.js'
 import usersRouter from './routes/users.js'
 import sessionsRouter from './routes/sessions.js';
-import cors from 'cors';
 
 const app = express()
 
-// ⭐ CORS設定を最初に入れる
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      // 必要なら後で追加
-      // "https://your-frontend.vercel.app",
-    ],
-    credentials: true,
-  })
-);
 
 // ミドルウェア
 app.use(express.json())
