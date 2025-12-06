@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from "cors";
 
 import messagesRouter from './routes/messages.js'
 import usersRouter from './routes/users.js'
@@ -6,6 +7,17 @@ import sessionsRouter from './routes/sessions.js';
 
 const app = express()
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://spike-messageboard.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 
 // ミドルウェア
 app.use(express.json())
