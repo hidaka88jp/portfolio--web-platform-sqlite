@@ -18,6 +18,8 @@ services:
     build:
       context: ../../experiment--express-with-nextjs
       dockerfile: Dockerfile
+      args:
+        DATABASE_URL: ${DATABASE_URL}
     container_name: spike-message-board-backend
     depends_on:
       - spike-message-board-mysql
