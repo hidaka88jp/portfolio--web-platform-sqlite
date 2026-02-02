@@ -13,6 +13,9 @@
   </p>
 </div>
 
+## About this repository
+This repository is derived from portfolio--web-platform and replaces MySQL with SQLite to explore a lightweight backend setup.
+MySQL version: https://github.com/hidaka88jp/portfolio--web-platform
 
 ## Overview
 This application is a message board with authentication, where users can log in and post messages. A guest mode is also available, allowing the app to be explored without creating an account.
