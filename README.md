@@ -14,7 +14,7 @@
 </div>
 
 ## About this repository
-This repository is derived from portfolio--web-platform and replaces MySQL with SQLite to explore a lightweight backend setup.
+This repository is derived from portfolio--web-platform and replaces MySQL with SQLite to explore a lightweight backend setup.  
 MySQL version: https://github.com/hidaka88jp/portfolio--web-platform
 
 ## Overview
@@ -74,7 +74,7 @@ Frontend (Next.js): https://github.com/hidaka88jp/experiment--nextjs-with-expres
       <img src="https://img.shields.io/badge/Node.js-4C4D59.svg?logo=nodedotjs">
       <img src="https://img.shields.io/badge/Express-4C4D59.svg?logo=express">
       <img src="https://img.shields.io/badge/Prisma-4C4D59.svg?logo=prisma">
-      <img src="https://img.shields.io/badge/MySQL-4C4D59.svg?logo=mysql">
+      <img src="https://img.shields.io/badge/SQLite-4C4D59.svg?logo=sqlite">
     </td>
   </tr>
   <tr>
