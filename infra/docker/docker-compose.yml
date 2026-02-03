@@ -1,20 +1,6 @@
 version: "3.9"
 
 services:
-  spike-message-board-mysql:
-    image: mysql:8
-    container_name: spike-message-board-mysql
-    restart: always
-    env_file:
-      - ./.env
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - mysql-data:/var/lib/mysql
-
   spike-message-board-backend:
     build:
       context: ../../experiment--express-with-nextjs
@@ -23,8 +9,6 @@ services:
         DATABASE_URL: ${DATABASE_URL}
     container_name: spike-message-board-backend
     restart: always
-    depends_on:
-      - spike-message-board-mysql
     env_file:
       - ./.env
     environment:
@@ -32,6 +16,8 @@ services:
       DATABASE_URL: ${DATABASE_URL}
     expose:
       - "3001"
+    volumes:
+      - sqlite-data:/app/data
 
   spike-message-board-nginx:
     image: nginx:latest
@@ -49,7 +35,7 @@ services:
       - certbot-var:/var/lib/letsencrypt
 
 volumes:
-  mysql-data: {}
+  sqlite-data: {}
   certbot-etc: {}
   certbot-var: {}
   certbot-www: {}
