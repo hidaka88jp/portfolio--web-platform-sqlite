@@ -12,6 +12,8 @@ services:
     environment:
       PORT: ${PORT}
       DATABASE_URL: ${DATABASE_URL}
+    volumes:
+      - sqlite-dev-data:/app/data
 
   spike-message-board-nginx:
     image: nginx:latest
@@ -21,3 +23,6 @@ services:
       - "80:80"
     volumes:
       - ../nginx/nginx.dev.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  sqlite-dev-data: {}
